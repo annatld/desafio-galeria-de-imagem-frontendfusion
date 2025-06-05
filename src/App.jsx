@@ -1,16 +1,22 @@
-
-import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Fav from './pages/Fav';
+import Navbar from './components/Navbar';
+import { FavProvider } from './context/FavContext';
+import './App.css';
 
 function App() {
-
   return (
-    <>
-      <main>
-        <h1>Seja bem vindo! :)</h1>
-        <p>Desafio de Galeria de Imagens - Processo Seletivo Frontend Fusion</p>
-      </main>
-    </>
+    <FavProvider> 
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/favoritos" element={<Fav />} />
+        </Routes>
+      </BrowserRouter>
+    </FavProvider>
   );
 }
 
-export default App
+export default App;
